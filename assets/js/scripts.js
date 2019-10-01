@@ -1,10 +1,16 @@
 
+
 function scroll_to(clicked_link, nav_height) {
 	var element_class = clicked_link.attr('href').replace('#', '.');
 	var scroll_to = 0;
 	if(element_class != '.top-content') {
 		element_class += '-container';
 		scroll_to = $(element_class).offset().top - nav_height;
+		document.getElementById('navbar').classList.remove('hide');
+		document.getElementById('navbar').classList.add('show');
+	} else {
+		document.getElementById('navbar').classList.remove('show');
+		document.getElementById('navbar').classList.add('hide');
 	}
 	if($(window).scrollTop() != scroll_to) {
 		$('html, body').stop().animate({scrollTop: scroll_to}, 1000);
